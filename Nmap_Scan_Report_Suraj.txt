@@ -1,0 +1,50 @@
+
+Local Network Port Scan Report
+==============================
+
+Name: Suraj Kanaujiya
+Date: June 23, 2025
+Tool Used: Nmap
+Scan Command Used:
+nmap -sS 10.0.2.0/24
+
+1. Network Scanned
+------------------
+IP Range: 10.0.2.0/24
+Devices Found: 3 (10.0.2.2, 10.0.2.3, 10.0.2.15)
+
+2. Open Ports & Analysis
+------------------------
+
+Device: 10.0.2.2
+----------------
+Port   | State | Service      | Notes
+-------|-------|--------------|--------------------------------------
+135    | Open  | msrpc        | Windows service; often targeted
+445    | Open  | microsoft-ds | SMB file sharing; security concern
+7070   | Open  | realserver   | Media streaming server
+9080   | Open  | glrpc        | Possibly internal RPC service
+
+Risk: SMB and RPC services can be exploited if unpatched or misconfigured.
+
+Device: 10.0.2.3
+----------------
+Port 53 closed.
+No open ports, no service detected.
+
+Device: 10.0.2.15 (Your system)
+-------------------------------
+All 1000 ports closed.
+Very secure from external scans.
+
+3. Security Recommendations
+---------------------------
+- Disable SMB (port 445) unless absolutely needed.
+- Ensure 10.0.2.2 is regularly patched.
+- Monitor unusual activity on ports like 7070 and 9080.
+- Use firewalls to restrict access to essential services.
+
+4. Key Learning
+---------------
+I used Nmap to discover devices on my local network, learned how open ports relate to services,
+and identified basic security risks. I now understand the importance of securing unnecessary open ports.
